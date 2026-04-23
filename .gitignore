@@ -1,0 +1,31 @@
+# Terraform files
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfplan.json
+terraform.tfvars
+*.auto.tfvars
+
+# Terragrunt cache
+.terragrunt-cache/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local environment variables
+.env
+.env.local
+
+# State backups
+terraform.tfstate.backup
