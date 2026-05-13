@@ -14,6 +14,7 @@ A production-ready Terragrunt configuration for managing multi-environment AWS i
 **Installation:** See [DETAILED_GUIDE.md](DETAILED_GUIDE.md#%EF%B8%8F-installation-guide-windows) for Windows setup instructions.
 
 ## 🚀 Getting Started 
+## 🚀 Getting Started 
 
 1. **Clone the repository:**
 
@@ -107,6 +108,7 @@ For detailed information, see:
 
 Review infrastructure changes carefully before applying. Understand AWS billing before deployment.
 root.hcl because Terragrunt uses:
+root.hcl because Terragrunt uses:
 
 `hcl
 find_in_parent_folders("root.hcl")
@@ -114,9 +116,11 @@ find_in_parent_folders("root.hcl")
 
 This function searches upward recursively through parent directories until it finds
 root.hcl and stops.
+root.hcl and stops.
 
 ### Example root.hcl
 
+```hcl
 ```hcl
 generate "provider" {
 path = "provider.tf"
@@ -156,6 +160,7 @@ if_exists = "overwrite_terragrunt"
 
 > **Note:** The file name can be anything—it doesn't have to be
 > root.hcl
+> root.hcl
 
 ---
 
@@ -163,6 +168,7 @@ if_exists = "overwrite_terragrunt"
 
 Within each service file, you can configure it as follows:
 
+```hcl
 ```hcl
 include "root" {
 path = find_in_parent_folders("root.hcl")
