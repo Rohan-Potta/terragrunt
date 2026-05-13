@@ -116,7 +116,7 @@ root.hcl and stops.
 
 ### Example root.hcl
 
-`hcl
+```hcl
 generate "provider" {
 path = "provider.tf"
 if_exists = "overwrite"
@@ -150,7 +150,7 @@ path = "backend.tf"
 if_exists = "overwrite_terragrunt"
 }
 }
-`
+```
 
 
 > **Note:** The file name can be anything—it doesn't have to be
@@ -162,7 +162,7 @@ if_exists = "overwrite_terragrunt"
 
 Within each service file, you can configure it as follows:
 
-`hcl
+```hcl
 include "root" {
 path = find_in_parent_folders("root.hcl")
 }
@@ -184,20 +184,4 @@ tag2 = "value2"
 subnet_id = dependency.vpc.outputs.subnet_id
 ami_id = "ami-0411ab208c7da4382"
 }
-`
-
----
-
-## Common Commands
-
-`bash
-terragrunt init       # Initialize Terragrunt
-terragrunt validate   # Validate configuration
-terragrunt plan       # Preview changes
-terragrunt apply      # Apply configuration
-terragrunt apply --all # Apply all resources in directory
-terragrunt destroy    # Destroy resources
-terragrunt destroy --all # Destroy all resources in directory
-`
-
-> **Note:** Running erragrunt apply --all in the /prod directory will create all resources (EC2, VPC, etc.) within that environment
+```
