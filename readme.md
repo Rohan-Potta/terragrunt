@@ -121,45 +121,46 @@ root.hcl and stops.
 ### Example root.hcl
 
 ```hcl
-```hcl
 generate "provider" {
-path = "provider.tf"
-if_exists = "overwrite"
-contents = <<EOF
+  path      = "provider.tf"
+  if_exists = "overwrite"
+
+  contents = <<EOF
 terraform {
-required_providers {
-aws = {
-source = "hashicorp/aws"
-version = "~> 6.0"
-}
-}
-required_version = ">= 1.5.0, <= 1.14.8"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+
+  required_version = ">= 1.5.0, <= 1.14.8"
 }
 
 provider "aws" {
-region = "ap-south-2"
+  region = "ap-south-2"
 }
 EOF
 }
 
 remote_state {
-backend = "s3"
-config = {
-bucket = "s3-terraform-backend-files-hyderabad"
-key = "}{path_relative_to_include()}/terragrunt/terraform.tfstate"
-region = "ap-south-2"
-}
+  backend = "s3"
 
-generate = {
-path = "backend.tf"
-if_exists = "overwrite_terragrunt"
-}
+  config = {
+    bucket = "s3-terraform-backend-files-hyderabad"
+    key    = "${path_relative_to_include()}/terragrunt/terraform.tfstate"
+    region = "ap-south-2"
+  }
+
+  generate = {
+    path      = "backend.tf"
+    if_exists = "overwrite_terragrunt"
+  }
 }
 ```
 
 
 > **Note:** The file name can be anything—it doesn't have to be
-> root.hcl
 > root.hcl
 
 ---
@@ -169,26 +170,27 @@ if_exists = "overwrite_terragrunt"
 Within each service file, you can configure it as follows:
 
 ```hcl
-```hcl
 include "root" {
-path = find_in_parent_folders("root.hcl")
+  path = find_in_parent_folders("root.hcl")
 }
 
 terraform {
-source = "../../../modules/ec2"
+  source = "../../../modules/ec2"
 }
 
 dependency "vpc" {
-config_path = "../vpc"
+  config_path = "../vpc"
 }
 
 inputs = {
-instance_type = "t3.micro"
-tags = {
-Name = "dev-ec2"
-tag2 = "value2"
-}
-subnet_id = dependency.vpc.outputs.subnet_id
-ami_id = "ami-0411ab208c7da4382"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "dev-ec2"
+    tag2 = "value2"
+  }
+
+  subnet_id = dependency.vpc.outputs.subnet_id
+  ami_id    = "ami-0411ab208c7da4382"
 }
 ```
