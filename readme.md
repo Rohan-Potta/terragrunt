@@ -13,8 +13,7 @@ A production-ready Terragrunt configuration for managing multi-environment AWS i
 
 **Installation:** See [DETAILED_GUIDE.md](DETAILED_GUIDE.md#%EF%B8%8F-installation-guide-windows) for Windows setup instructions.
 
-## 🚀 Getting Started 
-## 🚀 Getting Started 
+## 🚀 Getting Started
 
 1. **Clone the repository:**
 
@@ -90,7 +89,7 @@ For detailed information, see:
   - Best practices
   - Security considerations
   - Troubleshooting
-- **[understanding_code.md](understanding_code.md)** - A concise explanation of the repo layout and what each directory contains.
+- **[UNDERSTANDING_CODE.md](UNDERSTANDING_CODE.md)** - A concise explanation of the repo layout and what each directory contains.
 
 ## 🔐 Important Security Notes
 
@@ -158,7 +157,6 @@ remote_state {
   }
 }
 ```
-
 
 > **Note:** The file name can be anything—it doesn't have to be
 > root.hcl
