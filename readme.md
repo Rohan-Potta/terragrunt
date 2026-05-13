@@ -13,7 +13,7 @@ A production-ready Terragrunt configuration for managing multi-environment AWS i
 
 **Installation:** See [DETAILED_GUIDE.md](DETAILED_GUIDE.md#%EF%B8%8F-installation-guide-windows) for Windows setup instructions.
 
-## 🚀 Getting Started (5 minutes)
+## 🚀 Getting Started 
 
 1. **Clone the repository:**
 
@@ -102,35 +102,17 @@ For detailed information, see:
   .terragrunt-cache/
   ```
 
-## 📖 References
-
-- [Terragrunt Documentation](https://terragrunt.gruntwork.io/)
-- [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest)
-- [AWS CLI Documentation](https://docs.aws.amazon.com/cli/)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -am 'Add improvement'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Open a Pull Request
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
 ## ⚠️ Disclaimer
 
 Review infrastructure changes carefully before applying. Understand AWS billing before deployment.
-oot.hcl because Terragrunt uses:
+root.hcl because Terragrunt uses:
 
 `hcl
 find_in_parent_folders("root.hcl")
 `
 
 This function searches upward recursively through parent directories until it finds
-oot.hcl and stops.
+root.hcl and stops.
 
 ### Example root.hcl
 
@@ -170,31 +152,9 @@ if_exists = "overwrite_terragrunt"
 }
 `
 
-### if_exists Options
-
-| Option    | Behavior            | When to use                        |
-| --------- | ------------------- | ---------------------------------- |
-| overwrite | Replace file        | Default / most common              |
-| skip      | Leave existing file | When module already defines config |
-| error     | Fail if exists      | Strict environments                |
 
 > **Note:** The file name can be anything—it doesn't have to be
-> oot.hcl
-
----
-
-## Path Variables
-
-### $
-
-Returns the relative path after the
-oot.hcl file location.
-
-**Example:**
-
-- Root location: D:\Devops\terragrunt\live
-- Service path: D:\Devops\terragrunt\live\dev\vpc
-- Result: dev/vpc
+> root.hcl
 
 ---
 
@@ -230,7 +190,7 @@ ami_id = "ami-0411ab208c7da4382"
 
 ## Common Commands
 
-`ash
+`bash
 terragrunt init       # Initialize Terragrunt
 terragrunt validate   # Validate configuration
 terragrunt plan       # Preview changes
